@@ -1,0 +1,53 @@
+<% if notice.present? %>
+  <p role="status"><%= notice %></p>
+<% end %>
+
+<h1>マイページ</h1>
+
+<h2>ユーザー情報</h2>
+
+<p>名前：<%= @user.name %></p>
+<p>メールアドレス：<%= @user.email_address %></p>
+
+<p>
+  <%= link_to "ユーザー情報を編集する", edit_mypage_path %>
+</p>
+
+<h2>自分の投稿</h2>
+
+<p>
+  <%= link_to "新規投稿", new_post_path %>
+</p>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <article>
+      <h3>
+        <%= link_to post.title, post_path(post) %>
+      </h3>
+    </article>
+  <% end %>
+<% else %>
+  <p>まだ自分の投稿がありません。</p>
+<% end %>
+
+<p>
+  <%= link_to "みんなの投稿を見る", posts_path %>
+</p>
+
+<hr>
+
+<h2>退会</h2>
+
+<p>
+  退会すると、アカウントと自分の投稿が削除されます。
+</p>
+
+<%= button_to "退会する",
+              mypage_path,
+              method: :delete,
+              form: {
+                data: {
+                  turbo_confirm: "アカウントと自分の投稿が削除されます。本当に退会しますか？"
+                }
+              } %>

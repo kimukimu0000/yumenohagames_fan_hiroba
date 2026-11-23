@@ -1,0 +1,30 @@
+<% if notice.present? %>
+  <p role="status"><%= notice %></p>
+<% end %>
+
+<h1><%= @post.title %></h1>
+
+<p>投稿者：<%= @post.user.name %></p>
+
+<div>
+  <%= simple_format(@post.body) %>
+</div>
+
+<% if @post.user_id == Current.user.id %>
+  <p>
+    <%= link_to "編集する", edit_post_path(@post) %>
+  </p>
+
+  <%= button_to "削除する",
+                post_path(@post),
+                method: :delete,
+                form: {
+                  data: {
+                    turbo_confirm: "この投稿を削除しますか？"
+                  }
+                } %>
+<% end %>
+
+<p>
+  <%= link_to "投稿一覧へ戻る", posts_path %>
+</p>

@@ -1,0 +1,22 @@
+<h1>投稿一覧</h1>
+<% if notice.present? %>
+  <p role="status"><%= notice %></p>
+<% end %>
+
+<p>
+  <%= link_to "新規投稿", new_post_path %>
+</p>
+
+<% if @posts.any? %>
+  <% @posts.each do |post| %>
+    <article>
+      <h2>
+        <%= link_to post.title, post_path(post) %>
+      </h2>
+
+      <p>投稿者：<%= post.user.name %></p>
+    </article>
+  <% end %>
+<% else %>
+  <p>まだ投稿がありません。</p>
+<% end %>

@@ -1,24 +1,89 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# ユメノハゲームズファン広場
 
-Things you may want to cover:
+## サイト概要
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+架空のゲーム会社「ユメノハゲームズ」の作品について、感想や攻略情報を共有し、ファン同士が交流できるコミュニティサイトです。
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+私はゲームが好きで、プレイした感想や攻略情報をほかの人と共有できるサイトを作りたいと考えました。
 
-* Database initialization
+SNSではさまざまな話題が混在するため、特定のゲームに関する情報をまとめて探したい人にとって、目的の投稿を見つけにくい場合があります。
 
-* How to run the test suite
+また、同じゲームが好きな人と感想を語り合いたい人や、攻略で困ったことを質問したい人にも、作品ごとに交流できる場所があると便利だと考えました。
 
-* Services (job queues, cache servers, search engines, etc.)
+そこで、ゲームごとに感想・攻略記事・質問をまとめ、コメントを通じて情報交換できるコミュニティサイトを制作したいと考えました。
 
-* Deployment instructions
+掲載する会社とゲームは架空のものとし、オリジナルの設定を用意します。
 
-* ...
+### ターゲットユーザー
+
+- 対象のゲームが好きで、ほかのファンと交流したい人
+- プレイしたゲームの感想や攻略情報を投稿したい人
+- 攻略情報を探したり、分からないことを質問したりしたい人
+
+### 主な利用シーン
+
+- ゲームをプレイした感想を投稿し、ほかの人と語り合いたい時
+- ゲームの攻略情報を探したい時
+- 攻略で困ったことを質問し、ほかのユーザーに相談したい時
+- 気になるゲームについて、ほかの人の感想を読みたい時
+
+## 主な機能
+
+### 実装済みの機能
+
+- トップ・Aboutページ
+- Rails標準認証による会員登録・ログイン・ログアウト
+- 投稿の作成・一覧表示・詳細表示・編集・削除
+- 投稿者本人だけが投稿を編集・更新・削除できる制限
+- マイページでのユーザー情報・自分の投稿一覧の表示
+- 名前・メールアドレスの編集
+- 退会機能（アカウントと自分の投稿の削除）
+- 入力内容のチェックとエラーメッセージの表示
+
+### 追加実装予定の機能
+
+- ゲストログイン
+- 投稿・ユーザーの検索
+- コメントの投稿・表示・削除
+- ブックマークの登録・解除と保存した投稿の一覧表示
+- 投稿へのタグ登録・タグ検索
+- グループ機能
+- 管理者による会員の利用停止・コメント管理・グループ管理
+
+### グループ機能（実装予定）
+
+- ユーザーは、ゲーム作品や攻略テーマに関する交流グループを作成できます。
+- 他のユーザーはグループへの参加を申請でき、グループ作成者が承認・拒否を行います。
+- 参加メンバーはグループ内で投稿し、情報交換できます。
+- 管理者はグループ一覧を確認し、不適切なグループを削除できます。
+
+## 設計書
+
+以下の設計書には、追加実装予定の機能も含まれています。
+
+- [画面遷移図（UI Flows／draw.io）](https://drive.google.com/file/d/1dinPTQQnlWroSXG0Vg7pMxm057fq4bTS/view?usp=drive_link)
+- [ER図（draw.io）](https://drive.google.com/file/d/1LW2YsIArYXVuYn6yWktKvbW2hzu3CU82/view?usp=drive_link)
+- [テーブル定義書](https://docs.google.com/spreadsheets/d/17-sILj_3Pq0YMezXX099sLo3bZ-f29ip_7ncvQyAYUA/edit?usp=drive_link)
+- [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1qBisBmgVdk2RMkj0wOl7ofc10DZLHOsEnG23vwI-H3M/edit?usp=drive_link)
+
+## 開発環境
+
+- OS：Linux（Ubuntu）
+- 言語：HTML、CSS、JavaScript、Ruby、SQL
+- フレームワーク：Ruby on Rails
+- データベース：SQLite3（開発環境）
+- IDE：Visual Studio Code
+- 開発環境：AWS EC2
+- バージョン管理：Git・GitHub
+
+## 使用素材
+
+著作権を考慮し、架空の会社・ゲーム・データを扱います。
+
+今後、実在する画像や素材を利用する場合は、利用条件を確認し、必要な許諾を得たうえで使用します。

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   get "signup", to: "users#new", as: :signup
-resources :users, only: [:create]
+resources :users, only: [ :create ]
 resources :posts
 get "mypage", to: "users#show", as: :mypage
 

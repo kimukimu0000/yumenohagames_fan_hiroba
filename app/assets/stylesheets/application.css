@@ -8,10 +8,16 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
-  color: #333;
+  line-height: 1.7;
+  color: #293948;
+  background-color: #fff;
 }
 
 .site-header {
@@ -20,13 +26,13 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 20px 24px;
-  background-color: #f5f7fa;
-  border-bottom: 1px solid #ddd;
+  padding: 20px 32px;
+  background-color: #f2f5fb;
+  border-bottom: 1px solid #dce5ed;
 }
 
 .site-title {
-  color: #333;
+  color: #4079a8;
   font-size: 20px;
   font-weight: bold;
   text-decoration: none;
@@ -35,15 +41,141 @@ body {
 .site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  gap: 12px 20px;
 }
 
 .site-nav a {
-  color: #345a80;
+  color: #254e70;
+  text-underline-offset: 4px;
+}
+
+.site-nav a:hover {
+  color: #287565;
+}
+
+.site-nav span {
+  color: #596b7b;
+  font-size: 14px;
+}
+
+.site-nav form {
+  margin: 0;
+}
+
+.site-nav button {
+  padding: 8px 16px;
+  color: #254e70;
+  font: inherit;
+  background-color: #fff;
+  border: 1px solid #b9cbd9;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.site-nav button:hover {
+  background-color: #e5eef5;
 }
 
 .site-main {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 40px 24px 64px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 16px;
+  }
+
+  .site-nav {
+    gap: 10px 16px;
+  }
+
+  .site-main {
+    padding: 24px 16px 48px;
+  }
+}
+
+.site-main input[type="text"],
+.site-main input[type="email"],
+.site-main input[type="password"],
+.site-main textarea {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  padding: 10px 12px;
+  color: inherit;
+  font: inherit;
+  background-color: #fff;
+  border: 1px solid #aabac8;
+  border-radius: 6px;
+}
+
+.site-main textarea {
+  resize: vertical;
+}
+
+.site-main input:focus,
+.site-main textarea:focus {
+  outline: 2px solid #3979ad;
+  outline-offset: 2px;
+}
+
+.site-main form > div {
+  margin-bottom: 20px;
+}
+
+.site-main input[type="submit"] {
+  padding: 10px 24px;
+  color: #fff;
+  font: inherit;
+  background-color: #4e92c7;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.site-main input[type="submit"]:hover {
+  background-color: #2c5a7b;
+}
+
+.site-main [role="status"] {
+  padding: 12px 16px;
+  color: #245c40;
+  background-color: #edf8f0;
+  border: 1px solid #a8d5b5;
+  border-radius: 6px;
+}
+
+.site-main [role="alert"] {
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  color: #8a2929;
+  background-color: #fff1f1;
+  border: 1px solid #e4b0b0;
+  border-radius: 6px;
+}
+
+.site-main article {
+  margin-bottom: 16px;
+  padding: 20px;
+  background-color: #f8fafc;
+  border: 1px solid #dce5ed;
+  border-radius: 8px;
+}
+
+.site-main article h2,
+.site-main article h3 {
+  margin: 0 0 12px;
+}
+
+.site-main article p {
+  margin: 0;
+}
+
+.site-main article a {
+  color: #254e70;
+  text-underline-offset: 4px;
 }

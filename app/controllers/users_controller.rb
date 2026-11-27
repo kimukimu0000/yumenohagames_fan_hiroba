@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[new create]
+  before_action :restrict_guest_account, only: %i[edit update destroy]
 
   def new
     @user = User.new
@@ -52,6 +53,14 @@ def destroy
 end
 
   private
+
+  def restrict_guest_account
+  return unless Current.user.guest?
+
+  redirect_to mypage_path,
+              alert: "ゲストユーザーは情報の変更・退会ができません。",
+              status: :see_other
+end
 
 def profile_params
   params.require(:user).permit(:name, :email_address)

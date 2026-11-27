@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :session
+  resource :guest_session, only: :create
   resources :passwords, param: :token
  root "homes#top"
  get "about", to: "homes#about"

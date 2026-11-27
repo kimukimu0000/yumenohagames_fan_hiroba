@@ -2,6 +2,10 @@
   <p role="status"><%= notice %></p>
 <% end %>
 
+<% if alert.present? %>
+  <p role="alert"><%= alert %></p>
+<% end %>
+
 <h1>マイページ</h1>
 
 <h2>ユーザー情報</h2>
@@ -9,45 +13,43 @@
 <p>名前：<%= @user.name %></p>
 <p>メールアドレス：<%= @user.email_address %></p>
 
-<p>
-  <%= link_to "ユーザー情報を編集する", edit_mypage_path %>
-</p>
+<% if @user.guest? %>
+  <p>ゲストユーザーとして利用中です。情報の変更・退会はできません。</p>
+<% else %>
+  <p>
+    <%= link_to "ユーザー情報を編集する", edit_mypage_path %>
+  </p>
+<% end %>
 
 <h2>自分の投稿</h2>
 
-<p>
-  <%= link_to "新規投稿", new_post_path %>
-</p>
+<p><%= link_to "新規投稿", new_post_path %></p>
 
 <% if @posts.any? %>
   <% @posts.each do |post| %>
     <article>
-      <h3>
-        <%= link_to post.title, post_path(post) %>
-      </h3>
+      <h3><%= link_to post.title, post_path(post) %></h3>
     </article>
   <% end %>
 <% else %>
   <p>まだ自分の投稿がありません。</p>
 <% end %>
 
-<p>
-  <%= link_to "みんなの投稿を見る", posts_path %>
-</p>
+<p><%= link_to "みんなの投稿を見る", posts_path %></p>
 
-<hr>
+<% unless @user.guest? %>
+  <hr>
 
-<h2>退会</h2>
+  <h2>退会</h2>
 
-<p>
-  退会すると、アカウントと自分の投稿が削除されます。
-</p>
+  <p>退会すると、アカウントと自分の投稿が削除されます。</p>
 
-<%= button_to "退会する",
-              mypage_path,
-              method: :delete,
-              form: {
-                data: {
-                  turbo_confirm: "アカウントと自分の投稿が削除されます。本当に退会しますか？"
-                }
-              } %>
+  <%= button_to "退会する",
+                mypage_path,
+                method: :delete,
+                form: {
+                  data: {
+                    turbo_confirm: "アカウントと自分の投稿が削除されます。本当に退会しますか？"
+                  }
+                } %>
+<% end %>

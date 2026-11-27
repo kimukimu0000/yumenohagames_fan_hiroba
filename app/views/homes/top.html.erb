@@ -3,3 +3,11 @@
 <p>ゲームの感想や攻略情報を、ファン同士で共有する場所です。</p>
 
 <%= link_to "このサイトについて", about_path %>
+
+<% unless authenticated? %>
+  <p>会員登録せずに、ゲストとしてサイトを試せます。</p>
+
+  <%= button_to "ゲストログイン",
+                guest_session_path,
+                method: :post %>
+<% end %>

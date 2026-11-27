@@ -2,8 +2,12 @@ class PostsController < ApplicationController
   before_action :set_owned_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.includes(:user).order(created_at: :desc)
-  end
+  @keyword = params[:keyword].to_s.strip
+
+  @posts = Post.search(@keyword)
+               .includes(:user)
+               .order(created_at: :desc)
+end
 
   def new
     @post = Current.user.posts.build

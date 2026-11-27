@@ -1,6 +1,25 @@
 <h1>投稿一覧</h1>
+
 <% if notice.present? %>
   <p role="status"><%= notice %></p>
+<% end %>
+
+<%= form_with url: posts_path, method: :get do |form| %>
+  <div>
+    <%= form.label :keyword, "キーワード検索" %>
+    <%= form.text_field :keyword,
+                        value: @keyword,
+                        placeholder: "タイトル・本文から検索" %>
+  </div>
+
+  <div>
+    <%= form.submit "検索する" %>
+    <%= link_to "検索を解除", posts_path %>
+  </div>
+<% end %>
+
+<% if @keyword.present? %>
+  <p>「<%= @keyword %>」の検索結果</p>
 <% end %>
 
 <p>
@@ -18,5 +37,9 @@
     </article>
   <% end %>
 <% else %>
-  <p>まだ投稿がありません。</p>
+  <% if @keyword.present? %>
+    <p>条件に一致する投稿がありません。</p>
+  <% else %>
+    <p>まだ投稿がありません。</p>
+  <% end %>
 <% end %>
